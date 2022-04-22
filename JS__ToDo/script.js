@@ -44,9 +44,5 @@ document.getElementById('tasks').addEventListener('click',function chosenCheckbo
             realEl.style.color = 'black';
             realEl.style.textDecoration = 'none';
         }
-        
-        console.log(tasksObj)
-        
     }
-
 })
