@@ -20,16 +20,11 @@ export class Task {
     getInnerHtml() {
         return `
             <div class="createdTask" id="${this.mainId}">
-            
                 <div class="createdTaskContent" id="${this.divId}">
-                    <p id=${this.taskTextId}>Task: ${this.text}  
-                    </p>
-                    <p id=${this.creationDateId}>Creation Date: ${this.creationDate} 
-                    </p>
-                    <p id=${this.expirationDateId}>Expiration Date: ${this.expirationDate}
-                    </p>
+                    <p id=${this.taskTextId}>Task: ${this.text}</p>
+                    <p id=${this.creationDateId}>Creation Date: ${this.creationDate}</p>
+                    <p id=${this.expirationDateId}>Expiration Date: ${this.expirationDate}</p>
                 </div>
-                
             </div>
         `
     }
