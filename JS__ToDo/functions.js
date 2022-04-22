@@ -1,4 +1,4 @@
-import { regex,taskInput,tasksObj,currentDate } from "./variables.js";
+import { regex,taskInput,tasksObj,tasks,currentDate } from "./variables.js";
 import { Task } from "./Task.js"
 //cheking the validation 
 export function isValidEnter(userEnter) {
@@ -36,7 +36,7 @@ export function getExpirationDate(currentDate) {
     }
     if (expirationMonth > MAX_MONTHS) {  // if more then months in year
         expirationMonth = START_VALUE;   // then change on first month of year
-        expirationYear += START_VALUE;             // and change current year to the next year
+        expirationYear += START_VALUE;   // and change current year to the next year
     }
 
     if (expirationMonth < 10) {
@@ -56,6 +56,8 @@ export function createNewTask() {
     tasksObj.push(theTask);
     tasks.innerHTML += theTask.getInnerHtml();
     taskInput.value = "";
+    console.log(tasksObj)
+
 };
 
 export function rejectTask() {
@@ -103,3 +105,4 @@ export function createInputGroup({ inputId,pText,inputType }) {
         </div>
    `
 };
+
