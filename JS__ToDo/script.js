@@ -50,17 +50,3 @@ document.getElementById('tasks').addEventListener('click',function chosenCheckbo
     }
 
 })
-
-
-// el.isCompleted ? unDoneFn(realEl) : doneFn(realEl);
-
-// function doneFn(task) {
-//     task.style.color = "grey";
-//     task.style.textDecoration = "line-through"
-// }
-
-// function unDoneFn(task) {
-//     task.style.color = "black";
-//     task.style.textDecoration = "none"
-
-// }
