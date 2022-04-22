@@ -1,15 +1,14 @@
 import { Modal } from './Modal.js';
 import { createNewTask,isValidEnter,rejectTask,} from "./functions.js";
-import { taskInput,tasksObj,plusIcon } from "./variables.js";
+import { taskInput,tasksObj,plusIcon,ENTER_KEY_CODE } from "./variables.js";
 
 taskInput.addEventListener('keypress',function (e) {
-    if (e.keyCode == 13 && isValidEnter(taskInput.value)) {
-        createNewTask();
-    } else if (e.keyCode == 13 && !isValidEnter(taskInput.value)) {
-        rejectTask();
+    if (e.keyCode !== ENTER_KEY_CODE) {
+        return
     }
+    const isValid = isValidEnter(taskInput.value);
+    isValid ? createNewTask() : rejectTask();
 });
-
 
 let modal = new Modal({
     selfId: 'modal',
