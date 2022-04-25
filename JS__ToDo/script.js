@@ -1,6 +1,6 @@
 import { Modal } from './Modal.js';
-import { createNewTask,isValidEnter,rejectTask,} from "./functions.js";
-import { taskInput,tasksObj,plusIcon,ENTER_KEY_CODE } from "./variables.js";
+import { createNewTask,isValidEnter,rejectTask,MarkAsInProgress,MarkAsDone } from "./functions.js";
+import { taskInput,tasksObj,plusIcon,ENTER_KEY_CODE,tasks,CHECKBOX } from "./variables.js";
 import { Task } from "./Task.js";
 
 taskInput.addEventListener('keypress',function (e) {
@@ -28,21 +28,10 @@ plusIcon.addEventListener('click',function plusIconClicked() {
     modal.visible();
 });
 
-document.getElementById('tasks').addEventListener('click',function chosenCheckbox(event) {
-    if (event.target.type === 'checkbox') {
-        const el = tasksObj.find(item => item.checkBoxId === event.target.id);
+tasks.addEventListener('click',function chosenCheckbox(event) {
+    if (event.target.type === CHECKBOX) {
+        const el = tasksObj.find( (item) => item.checkBoxId === event.target.id);
         const realEl = document.getElementById(el.groupDivId);
-
-        if (!el.isCompleted) {
-            el.isCompleted = true;
-            realEl.style.color = 'lightgrey';
-            realEl.style.textDecoration = 'line-through';
-        }
-
-        else if (el.isCompleted) {
-            el.isCompleted = false;
-            realEl.style.color = 'black';
-            realEl.style.textDecoration = 'none';
-        }
+        event.target.checked ? MarkAsDone(el,realEl) : MarkAsInProgress(el,realEl);
     }
 })
