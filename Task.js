@@ -11,11 +11,10 @@ export class Task {
         this.taskTextId = `taskTextId${Task.getUniqueId()}`;
         this.creationDateId = `creationDateId${Task.getUniqueId()}`;
         this.expirationDateId = `expirationDateId${Task.getUniqueId()}`;
-        this.mainId = `mainId${Task.getUniqueId()}`
-        this.groupDivId = `groupDivId${Task.getUniqueId()}`
-        this.checkBoxId = `checkBoxId${Task.getUniqueId()}`
-        this.crossRowId = `crossrow${Task.getUniqueId()}`
-        this.pencilEditId = `pencilEdit${Task.getUniqueId()}`
+        this.mainId = `mainId${Task.getUniqueId()}`;
+        this.groupDivId = `groupDivId${Task.getUniqueId()}`;
+        this.checkBoxId = `checkBoxId${Task.getUniqueId()}`;
+        this.crossRowId = `crossrow${Task.getUniqueId()}`;
         Object.assign(this,{ ...taskData });
     }
 
@@ -48,7 +47,9 @@ export class Task {
 
     static deleteTask(createdTaskId) {
         document.getElementById(createdTaskId).remove();
-        const removeTaskIndex = tasksObj.findIndex((item) => item.mainId === createdTaskId)
+
+        const removeTaskIndex = tasksObj.findIndex( (item) => item.mainId === createdTaskId)
+
         tasksObj.splice(removeTaskIndex,1)
     }
 }

@@ -1,6 +1,5 @@
-import { regex,taskInput,tasksObj,tasks,currentDate,LIGHTGREY_COLOR,LINE_THROUGH,BLACK_COLOR,NONE } from "./variables.js";
+import { regex,taskInput,tasksObj,tasks,currentDate,STYLES} from "./variables.js";
 import { Task } from "./Task.js";
-
 //cheking the validation 
 export function isValidEnter(userEnter) {
     return userEnter.match(regex);
@@ -11,12 +10,15 @@ export function getCreationDate(currentDate) {
     let currentDay = currentDate.getDate(),
         currentMonth = currentDate.getMonth() + 1,
         currentYear = currentDate.getFullYear();
+
     if (currentDay < 10) {
         currentDay = `0${currentDay}`
     }
+
     if (currentMonth < 10) {
         currentMonth = `0${currentMonth}`;
     }
+
     return `${currentDay}-${currentMonth}-${currentYear}`
     // currentDate.getMonth() + 1 : because months are from 0 to 11, we need : 1 - 12
 }
@@ -48,13 +50,13 @@ export function getExpirationDate(currentDate) {
 }
 
 export function createNewTask() {
-    let theTask = new Task({
+    const task = new Task({
         text: taskInput.value,
         creationDate: getCreationDate(currentDate),
         expirationDate: getExpirationDate(currentDate)
     });
-    tasksObj.push(theTask);
-    tasks.innerHTML += theTask.getInnerHtml();
+    tasksObj.push(task);
+    tasks.innerHTML += task.getInnerHtml();
     taskInput.value = "";
 };
 
@@ -90,13 +92,13 @@ export function convertDateReadable(dateString) {
     return dateString.split('-').reverse().join('-');
 };
 
-export function isValidDate(dateStart,dateEnd) {
+export function isValidDate(dateStart, dateEnd) {
     const dateStartObject = new Date(dateStart);
     const dateEndObject = new Date(dateEnd);
-    return ((Date.now() <= dateStartObject) && (dateStartObject <= dateEndObject));
+    return ( (Date.now() <= dateStartObject) && (dateStartObject <= dateEndObject) );
 };
 
-export function createInputGroup({ inputId,pText,inputType }) {
+export function createInputGroup( { inputId, pText, inputType } ) {
     return `
         <div class="modalGroup">
             <p>${pText}<input id="${inputId}" class="modalTaskDate" type="${inputType}" required></p>
@@ -104,14 +106,14 @@ export function createInputGroup({ inputId,pText,inputType }) {
    `
 };
 
-export function MarkAsDone(el,realEl) {
+export function MarkAsDone(el, htmlTaskElement) {
     el.isCompleted = true;
-    realEl.style.color = LIGHTGREY_COLOR;
-    realEl.style.textDecoration = LINE_THROUGH;
+    htmlTaskElement.style.color = STYLES.COLOR.LIGHTGREY_COLOR;
+    htmlTaskElement.style.textDecoration = STYLES.TEXT.LINE_THROUGH;
 }
 
-export function MarkAsInProgress(el,realEl) {
+export function MarkAsInProgress(el, htmlTaskElement) {
     el.isCompleted = false;
-    realEl.style.color = BLACK_COLOR;
-    realEl.style.textDecoration = NONE;
+    htmlTaskElement.style.color = STYLES.COLOR.BLACK_COLOR;
+    htmlTaskElement.style.textDecoration = STYLES.TEXT.NONE;
 }
