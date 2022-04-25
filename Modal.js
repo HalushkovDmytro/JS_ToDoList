@@ -1,6 +1,6 @@
 import { Task } from "./Task.js";
 import { createInputGroup,convertDate,isValidDate,isValidEnter,markAsInvalid,convertDateReadable } from "./functions.js";
-import { taskInput,tasksObj,NONE,BLOCK } from "./variables.js";
+import { taskInput,tasksObj,STYLES} from "./variables.js";
 
 export class Modal {
     selfId
@@ -53,10 +53,12 @@ export class Modal {
     static initializeHandlers(modal) {
         document.getElementById(modal.buttonOKId).addEventListener('click',function okClicked() {
             const inputTask = document.getElementById(modal.inputTaskId);
+
             const dateCreation = convertDate(document.getElementById(modal.inputCreationId).value);
+
             const dateExpiration = convertDate(document.getElementById(modal.inputExpirationId).value);
 
-            if (isValidEnter(inputTask.value) && isValidDate(dateCreation,dateExpiration)) {
+            if (isValidEnter(inputTask.value) && isValidDate(dateCreation, dateExpiration)) {
                 const task = new Task({
                     text: inputTask.value,
                     creationDate: convertDateReadable(document.getElementById(modal.inputCreationId).value),
@@ -67,13 +69,14 @@ export class Modal {
                 document.getElementById('tasks').innerHTML += task.getInnerHtml();
                 taskInput.value = "";
                 Modal.clearInputs(modal);
-                document.getElementById(modal.selfId).style.display = NONE;
+                document.getElementById(modal.selfId).style.display = STYLES.DISPLAY.NONE;
 
             } else {
                 if (!isValidEnter(inputTask.value)) {
                     markAsInvalid(inputTask);
                 }
-                if (!isValidDate(dateCreation,dateExpiration)) {
+
+                if (!isValidDate(dateCreation, dateExpiration)) {
                     const creationElem = document.getElementById(modal.inputCreationId);
                     const expirationElem = document.getElementById(modal.inputExpirationId);
 
@@ -83,14 +86,14 @@ export class Modal {
             }
         });
         
-        document.getElementById(modal.buttonCANCELId).addEventListener('click',function cancelClicked() {
-            document.getElementById(modal.selfId).style.display = "none";
+        document.getElementById(modal.buttonCANCELId).addEventListener('click', function cancelClicked() {
+            document.getElementById(modal.selfId).style.display = STYLES.DISPLAY.NONE;
             Modal.clearInputs(modal);
         });
     }
 
     visible() {
-        document.getElementById(this.selfId).style.display = BLOCK;
+        document.getElementById(this.selfId).style.display = STYLES.DISPLAY.BLOCK;
     }
 
 }
