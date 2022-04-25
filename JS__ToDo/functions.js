@@ -1,4 +1,4 @@
-import { regex,taskInput,tasksObj,currentDate } from "./variables.js";
+import { regex,taskInput,tasksObj,tasks,currentDate,LIGHTGREY_COLOR,LINE_THROUGH,BLACK_COLOR,NONE } from "./variables.js";
 import { Task } from "./Task.js"
 //cheking the validation 
 export function isValidEnter(userEnter) {
@@ -36,7 +36,7 @@ export function getExpirationDate(currentDate) {
     }
     if (expirationMonth > MAX_MONTHS) {  // if more then months in year
         expirationMonth = START_VALUE;   // then change on first month of year
-        expirationYear += START_VALUE;             // and change current year to the next year
+        expirationYear += START_VALUE;   // and change current year to the next year
     }
 
     if (expirationMonth < 10) {
@@ -103,3 +103,16 @@ export function createInputGroup({ inputId,pText,inputType }) {
         </div>
    `
 };
+
+export function MarkAsDone(el,realEl) {
+    el.isCompleted = true;
+    realEl.style.color = LIGHTGREY_COLOR;
+    realEl.style.textDecoration = LINE_THROUGH;
+}
+
+export function MarkAsInProgress(el,realEl) {
+    el.isCompleted = false;
+    realEl.style.color = BLACK_COLOR;
+    realEl.style.textDecoration = NONE;
+}
+

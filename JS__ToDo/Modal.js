@@ -1,6 +1,7 @@
 import { Task } from "./Task.js";
 import { createInputGroup,convertDate,isValidDate,isValidEnter,markAsInvalid,convertDateReadable } from "./functions.js";
 import { taskInput,tasksObj } from "./variables.js";
+// import { modal } from "./script.js";
 
 export class Modal {
     selfId
@@ -22,20 +23,20 @@ export class Modal {
                     <h2>${this.modalTitle}</h2>
                     
                     ${createInputGroup({
-                        inputId: this.inputTaskId,
-                        pText: `Task : `,
-                        inputType: 'text'
-                    })}
+            inputId: this.inputTaskId,
+            pText: `Task : `,
+            inputType: 'text'
+        })}
                     ${createInputGroup({
-                        inputId: this.inputCreationId,
-                        pText: `Creation Date :`,
-                        inputType: 'date'
-                    })}
+            inputId: this.inputCreationId,
+            pText: `Creation Date :`,
+            inputType: 'date'
+        })}
                     ${createInputGroup({
-                        inputId: this.inputExpirationId,
-                        pText: `Expiration Date :`,
-                        inputType: 'date'
-                    })}
+            inputId: this.inputExpirationId,
+            pText: `Expiration Date :`,
+            inputType: 'date'
+        })}
                     
             <div class="modalButtons" id="modalButtons">
                     <button class="SAVE" id="${this.buttonOKId}">SAVE</button>

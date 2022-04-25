@@ -1,6 +1,7 @@
 import { Modal } from './Modal.js';
-import { createNewTask,isValidEnter,rejectTask,} from "./functions.js";
-import { taskInput,tasksObj,plusIcon,ENTER_KEY_CODE } from "./variables.js";
+import { createNewTask,isValidEnter,rejectTask,MarkAsInProgress,MarkAsDone } from "./functions.js";
+import { taskInput,tasksObj,plusIcon,ENTER_KEY_CODE,tasks,CHECKBOX } from "./variables.js";
+import { Task } from "./Task.js";
 
 taskInput.addEventListener('keypress',function (e) {
     if (e.keyCode !== ENTER_KEY_CODE) {
@@ -26,3 +27,11 @@ Modal.initializeHandlers(modal);
 plusIcon.addEventListener('click',function plusIconClicked() {
     modal.visible();
 });
+
+tasks.addEventListener('click',function chosenCheckbox(event) {
+    if (event.target.type === CHECKBOX) {
+        const el = tasksObj.find( (item) => item.checkBoxId === event.target.id);
+        const realEl = document.getElementById(el.groupDivId);
+        event.target.checked ? MarkAsDone(el,realEl) : MarkAsInProgress(el,realEl);
+    }
+})
