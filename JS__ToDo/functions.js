@@ -1,4 +1,4 @@
-import { regex,taskInput,tasksObj,tasks,currentDate } from "./variables.js";
+import { regex,taskInput,tasksObj,tasks,currentDate,LIGHTGREY_COLOR,LINE_THROUGH,BLACK_COLOR,NONE } from "./variables.js";
 import { Task } from "./Task.js"
 //cheking the validation 
 export function isValidEnter(userEnter) {
@@ -56,8 +56,6 @@ export function createNewTask() {
     tasksObj.push(theTask);
     tasks.innerHTML += theTask.getInnerHtml();
     taskInput.value = "";
-    console.log(tasksObj)
-
 };
 
 export function rejectTask() {
@@ -105,4 +103,16 @@ export function createInputGroup({ inputId,pText,inputType }) {
         </div>
    `
 };
+
+export function MarkAsDone(el,realEl) {
+    el.isCompleted = true;
+    realEl.style.color = LIGHTGREY_COLOR;
+    realEl.style.textDecoration = LINE_THROUGH;
+}
+
+export function MarkAsInProgress(el,realEl) {
+    el.isCompleted = false;
+    realEl.style.color = BLACK_COLOR;
+    realEl.style.textDecoration = NONE;
+}
 
