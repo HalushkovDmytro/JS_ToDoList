@@ -39,7 +39,7 @@ export class Task {
                 </div>
                 <div class="createdTaskOptions">
                     <div class="crossRowContainer">
-                    <img src="./img/cross-icon.png" id="${this.crossRowId}" class="crossRow" style="width: 20px; height: 20px; cursor: pointer">
+                    <img src="./img/crossImg.png" id="${this.crossRowId}" class="crossRow" style="width: 20px; height: 20px; cursor: pointer">
                     </div>
                 </div>
             </div>
@@ -52,47 +52,3 @@ export class Task {
         tasksObj.splice(removeTaskIndex,1)
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
