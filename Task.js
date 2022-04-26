@@ -1,6 +1,5 @@
 import { tasksObj } from "./variables.js";
 
-
 export class Task {
     text
     creationDate
@@ -15,6 +14,7 @@ export class Task {
         this.groupDivId = `groupDivId${Task.getUniqueId()}`;
         this.checkBoxId = `checkBoxId${Task.getUniqueId()}`;
         this.crossRowId = `crossrow${Task.getUniqueId()}`;
+        this.pencilEditId = `pencilEdit${Task.getUniqueId()}`;
         Object.assign(this,{ ...taskData });
     }
 
@@ -38,7 +38,10 @@ export class Task {
                 </div>
                 <div class="createdTaskOptions">
                     <div class="crossRowContainer">
-                    <img src="./img/crossImg.png" id="${this.crossRowId}" class="crossRow" style="width: 20px; height: 20px; cursor: pointer">
+                        <img src="./img/crossImg.png" id="${this.crossRowId}" class="crossRow" style="width: 20px; height: 20px; cursor: pointer">
+                    </div>
+                    <div class="pencilEditContainer">
+                        <img src="./img/pencilImg.png" id="${this.pencilEditId}" class="pencilEdit" style="width: 25px; height: 25px; cursor: pointer">
                     </div>
                 </div>
             </div>
@@ -51,6 +54,12 @@ export class Task {
         const removeTaskIndex = tasksObj.findIndex( (item) => item.mainId === createdTaskId)
 
         tasksObj.splice(removeTaskIndex,1)
+    }
+
+    static replaceTask(changedTaskObj) {
+        const removeTaskIndex = tasksObj.findIndex( (item) => item.mainId === changedTaskObj.mainId);
+
+        tasksObj.splice(removeTaskIndex,1,changedTaskObj);
     }
 }
 
