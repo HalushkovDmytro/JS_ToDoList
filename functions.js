@@ -21,7 +21,7 @@ export function getCreationDate(currentDate) {
 
     return `${currentDay}-${currentMonth}-${currentYear}`
     // currentDate.getMonth() + 1 : because months are from 0 to 11, we need : 1 - 12
-}
+};
 
 // calculating the expiration date
 export function getExpirationDate(currentDate) {
@@ -48,7 +48,7 @@ export function getExpirationDate(currentDate) {
     }
 
     return `${expirationDay}-${expirationMonth}-${expirationYear}`
-}
+};
 
 export function createNewTask() {
     const task = new Task({
@@ -101,10 +101,14 @@ export function isValidDate(dateStart, dateEnd) {
 };
 
 export function isValidDateChange(dateStart, dateEnd) {
-    const dateStartObject = new Date(dateStart);
-    const dateEndObject = new Date(dateEnd);
-    const needIt = Date.now();
-    const dateIs = new Date(needIt);
+    const 
+        dateStartObject = new Date(dateStart),
+        dateEndObject = new Date(dateEnd);
+    
+    const exactTime = Date.now();
+    
+    const dateIs = new Date(exactTime);
+    
     return (dateIs.getDate() <= dateStartObject.getDate() && (dateStartObject <= dateEndObject));
 };
 
@@ -120,18 +124,18 @@ export function MarkAsDone(el,htmlTaskElement) {
     el.isCompleted = true;
     htmlTaskElement.style.color = STYLES.COLOR.LIGHTGREY_COLOR;
     htmlTaskElement.style.textDecoration = STYLES.TEXT.LINE_THROUGH;
-}
+};
 
 export function MarkAsInProgress(el,htmlTaskElement) {
     el.isCompleted = false;
     htmlTaskElement.style.color = STYLES.COLOR.BLACK_COLOR;
     htmlTaskElement.style.textDecoration = STYLES.TEXT.NONE;
-}
+};
 
 export function convertForInputDate(dateToConvert) {
     let receivedDate = dateToConvert.split('-').reverse(); //['yyyy', 'mm', 'dd']
-
+    
     return receivedDate.reduce((acc,item) => {
         return (item.length === 1) ? acc + '-0' + item : acc + '-' + item;
     })
-}
+};
