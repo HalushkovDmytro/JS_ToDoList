@@ -3,7 +3,6 @@ import { createNewTask, isValidEnter, rejectTask, MarkAsInProgress, MarkAsDone }
 import { taskInput, tasksObj, plusIcon, tasks, ENTER_KEY_CODE, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 
-
 taskInput.addEventListener('keypress',function (e) {
     if (e.keyCode !== ENTER_KEY_CODE) {
         return
