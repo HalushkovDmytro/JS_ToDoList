@@ -120,13 +120,17 @@ export function createInputGroup({ inputId,pText,inputType }) {
    `
 };
 
-export function MarkAsDone(el,htmlTaskElement) {
+export function MarkAsDone(el) {
+    const htmlTaskElement = document.getElementById(el.mainId);
+
     el.isCompleted = true;
     htmlTaskElement.style.color = STYLES.COLOR.LIGHTGREY_COLOR;
     htmlTaskElement.style.textDecoration = STYLES.TEXT.LINE_THROUGH;
 };
 
-export function MarkAsInProgress(el,htmlTaskElement) {
+export function MarkAsInProgress(el) {
+    const htmlTaskElement = document.getElementById(el.mainId);
+
     el.isCompleted = false;
     htmlTaskElement.style.color = STYLES.COLOR.BLACK_COLOR;
     htmlTaskElement.style.textDecoration = STYLES.TEXT.NONE;
@@ -139,3 +143,13 @@ export function convertForInputDate(dateToConvert) {
         return (item.length === 1) ? acc + '-0' + item : acc + '-' + item;
     })
 };
+
+export function eraseReWrite(){
+    tasksObj.forEach((item) => Task.removeDOMTask(item.mainId));
+    tasksObj.forEach((item) => tasks.innerHTML += item.getInnerHtml());
+    tasksObj.forEach((item) => {
+        const markedId = document.getElementById(item.mainId)
+
+        item.isCompleted ? MarkAsDone(item, markedId) : MarkAsInProgress(item, markedId)
+    })
+}

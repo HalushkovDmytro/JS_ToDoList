@@ -57,7 +57,7 @@ export class Modal {
     }
 
     initializeChangeModal() {
-        document.getElementById('forChangeModal').innerHTML = `
+        document.getElementById('forModal').innerHTML = `
             <div id="${this.selfId}" class="modal">
                 <div class="modalContent">
                     <h2>${this.modalTitle}</h2>
