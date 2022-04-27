@@ -88,7 +88,6 @@ document.getElementById('buttonActive').addEventListener('click', function showA
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
         }
     })
-
 });
 
 document.getElementById('buttonCompleted').addEventListener('click', function showComplited(){
@@ -128,4 +127,4 @@ document.getElementById('sortingBlock').addEventListener('click', function sortI
         tasksObj.sort((a, b) => new Date(convertForInputDate(a.creationDate)) - new Date(convertForInputDate(b.creationDate)));
         eraseReWrite();
     }
-})
+});
