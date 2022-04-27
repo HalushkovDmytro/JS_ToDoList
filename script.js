@@ -57,7 +57,6 @@ tasks.addEventListener('click',function crossRowRemove(event) {
 });
 
 tasks.addEventListener('click',function editTask(event) {
-
     const target = event.target;
 
     const isPencil = target.classList.contains('pencilEdit');
@@ -75,5 +74,43 @@ tasks.addEventListener('click',function editTask(event) {
     });
 
     modalChange.initChange();
+});
+
+document.getElementById('buttonAll').addEventListener('click', function showAll(){
+    tasksObj.forEach((item) => {
+        document.getElementById(item.mainId).style.display = STYLES.DISPLAY.FLEX;
+    });
+});
+
+document.getElementById('buttonActive').addEventListener('click', function showActive(){
+    tasksObj.forEach((item) => {
+        if (!item.isCompleted) {
+            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.FLEX;
+        } else {
+            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
+        }
+    })
 })
+
+document.getElementById('buttonCompleted').addEventListener('click', function showComplited(){
+    tasksObj.forEach((item) => {
+        if(item.isCompleted){
+            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.FLEX;
+        } else {
+            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
+        }
+    })
+})
+
+document.getElementById('buttonClearCompleted').addEventListener('click', function clearCompleted() {
+    const completedObj = tasksObj.filter( item => item.isCompleted === true)
+
+    completedObj.forEach( item => Task.deleteTask(item.mainId));
+})
+
+//git add .
+//git commit -m "хнопашки"
+//git push на pullrequest
+//потом git pull к себе
+
 
