@@ -1,5 +1,5 @@
 import { Modal } from './Modal.js';
-import { createNewTask, isValidEnter, rejectTask, MarkAsInProgress, MarkAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
+import { createNewTask, isValidEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
 import { taskInput, tasksObj, plusIcon, tasks, ENTER_KEY_CODE, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 
@@ -37,7 +37,7 @@ tasks.addEventListener('click',function chosenCheckbox(event) {
 
     const el = tasksObj.find((item) => item.checkBoxId === event.target.id);
 
-    event.target.checked ? MarkAsDone(el) : MarkAsInProgress(el);
+    event.target.checked ? markAsDone(el) : markAsInProgress(el);
 });
 
 tasks.addEventListener('click',function crossRowRemove(event) {
