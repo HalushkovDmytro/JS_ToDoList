@@ -107,10 +107,3 @@ document.getElementById('buttonClearCompleted').addEventListener('click', functi
 
     completedObj.forEach( item => Task.deleteTask(item.mainId));
 })
-
-//git add .
-//git commit -m "хнопашки"
-//git push на pullrequest
-//потом git pull к себе
-
-
