@@ -13,11 +13,12 @@ export const STYLES = {
         },
         DISPLAY : {
              NONE : 'none',
-             BLOCK : 'block'
+             BLOCK : 'block',
+             FLEX: 'flex'
         },
         TEXT : {
             LINE_THROUGH : 'line-through',
-            NONE : 'none',
+            NONE : 'none'
         },
         ATTR : {
              CHECKBOX : 'checkbox'
