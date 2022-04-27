@@ -20,17 +20,21 @@
             <a class="blockButtons" id="buttonClearCompleted">Clear completed</a>
         </div>
         <div class="addTask">
+            <a href="#">
+                <img src="./img/sortImg.png" class="sortingTasks" id="sortingTasks" alt="sort">
+            </a>
             <input class="taskInput" id="taskInput" type="text" placeholder="Add your task here" required>
-            <img src="img/plusImg.svg" class="plusImg" id="plusImg" alt="plus">
+            <a href="#">
+                <img src="img/plusImg.svg" class="plusImg" id="plusImg" alt="plus">
+            </a>
+            <div class="sortingBlock" id="sortingBlock" style="display: none;">
+                <a class="sortByDate" id="sortByDate">Date</a>
+                <a class="sortByText" id="sortByText">Text</a>
+            </div>
         </div>
     </div>
     <div class="forModal" id="forModal">
 
-    </div>
-    <div class="forChangeModal" id="forChangeModal">
-
-    </div>
-    </div>
     </div>
     <script src="script.js" type="module"></script>
 </body>

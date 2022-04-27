@@ -61,6 +61,10 @@ export class Task {
 
         tasksObj.splice(removeTaskIndex,1,changedTaskObj);
     }
+
+    static removeDOMTask(createdTaskId) {
+        document.getElementById(createdTaskId).remove();
+    }
 }
 
 

@@ -1,5 +1,5 @@
 import { Modal } from './Modal.js';
-import { createNewTask, isValidEnter, rejectTask, MarkAsInProgress, MarkAsDone } from "./functions.js";
+import { createNewTask, isValidEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
 import { taskInput, tasksObj, plusIcon, tasks, ENTER_KEY_CODE, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 
@@ -37,9 +37,7 @@ tasks.addEventListener('click',function chosenCheckbox(event) {
 
     const el = tasksObj.find((item) => item.checkBoxId === event.target.id);
 
-    const htmlTaskElement = document.getElementById(el.mainId);
-
-    event.target.checked ? MarkAsDone(el,htmlTaskElement) : MarkAsInProgress(el,htmlTaskElement);
+    event.target.checked ? markAsDone(el) : markAsInProgress(el);
 });
 
 tasks.addEventListener('click',function crossRowRemove(event) {
@@ -90,7 +88,7 @@ document.getElementById('buttonActive').addEventListener('click', function showA
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
         }
     })
-})
+});
 
 document.getElementById('buttonCompleted').addEventListener('click', function showComplited(){
     tasksObj.forEach((item) => {
@@ -100,10 +98,33 @@ document.getElementById('buttonCompleted').addEventListener('click', function sh
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
         }
     })
-})
+});
 
 document.getElementById('buttonClearCompleted').addEventListener('click', function clearCompleted() {
     const completedObj = tasksObj.filter( item => item.isCompleted === true)
 
     completedObj.forEach( item => Task.deleteTask(item.mainId));
-})
+});
+
+document.getElementById('sortingTasks').addEventListener('click', function showSortBlock(){
+    const sortBlock = document.getElementById('sortingBlock');
+
+    if(sortBlock.style.display === STYLES.DISPLAY.NONE){
+        sortBlock.style.display = STYLES.DISPLAY.FLEX
+    } else if (sortBlock.style.display === STYLES.DISPLAY.FLEX){
+        sortBlock.style.display = STYLES.DISPLAY.NONE
+    }
+
+});
+
+document.getElementById('sortingBlock').addEventListener('click', function sortItems(event){
+    if(event.target.id === 'sortByText'){
+        tasksObj.sort((a, b) => a.text.localeCompare(b.text));
+        eraseReWrite();
+    }
+
+    if(event.target.id === 'sortByDate'){
+        tasksObj.sort((a, b) => new Date(convertForInputDate(a.creationDate)) - new Date(convertForInputDate(b.creationDate)));
+        eraseReWrite();
+    }
+});
