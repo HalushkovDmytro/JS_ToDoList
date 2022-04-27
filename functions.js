@@ -120,7 +120,7 @@ export function createInputGroup({ inputId,pText,inputType }) {
    `
 };
 
-export function MarkAsDone(el) {
+export function markAsDone(el) {
     const htmlTaskElement = document.getElementById(el.mainId);
 
     el.isCompleted = true;
@@ -128,7 +128,7 @@ export function MarkAsDone(el) {
     htmlTaskElement.style.textDecoration = STYLES.TEXT.LINE_THROUGH;
 };
 
-export function MarkAsInProgress(el) {
+export function markAsInProgress(el) {
     const htmlTaskElement = document.getElementById(el.mainId);
 
     el.isCompleted = false;
