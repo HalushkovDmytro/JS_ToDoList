@@ -18,7 +18,7 @@ export const STYLES = {
         },
         TEXT : {
             LINE_THROUGH : 'line-through',
-            NONE : 'none',
+            NONE : 'none'
         },
         ATTR : {
              CHECKBOX : 'checkbox'

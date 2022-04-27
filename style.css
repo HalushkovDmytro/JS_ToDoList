@@ -101,16 +101,13 @@
 }
 
 .sortingBlock a:hover{
-    border: 1px solid rgba(129,250,226);
-    rgba(119, 107, 250);
+    border: 1px solid rgba(119, 107, 250);
     box-shadow: inset 3px 3px 5px rgba(0, 132, 255, 0.3), 1px 1px 3px #00CED1;
 }
 
 .sortingBlock a:active{
-
     background: rgb(129,250,226);
 }
-
 
 /*buttons styles*/
 .forButtons{
@@ -142,6 +139,35 @@
     background: linear-gradient(180deg, rgba(92,209,186,1) 8%, rgba(96,91,210,1) 97%);
 }
 
+/*buttons styles*/
+.forButtons{
+    display: flex;
+    justify-content: space-evenly;
+    align-content: center;
+    text-align: center;
+    margin: 20px auto;
+    max-width: 70%;
+    min-width: 400px;
+}
+.blockButtons{
+    display: inline-block;
+    border: 1px solid rgba(103, 93, 212);
+    cursor: pointer;
+    padding: 10px 15px;
+    border-radius: 15px;
+    font-family: "Roboto";
+    transition: all .9s ease-in-out;
+    background: rgb(129,250,226);
+    background: linear-gradient(180deg, rgba(129,250,226,1) 8%, rgba(156,152,240,1) 97%);
+}
+.blockButtons:hover{
+    border: 1px solid rgba(119, 107, 250);
+    box-shadow: inset 0px 5px 15px rgba(0, 132, 255, 0.3), 1px 1px 5px rgba(255, 255, 255, 1);
+}
+.blockButtons:active{
+    background: rgb(92,209,186);
+    background: linear-gradient(180deg, rgba(92,209,186,1) 8%, rgba(96,91,210,1) 97%);
+}
 /* modal styles*/
 .modal {
     display: none;

@@ -55,7 +55,6 @@ tasks.addEventListener('click',function crossRowRemove(event) {
 });
 
 tasks.addEventListener('click',function editTask(event) {
-
     const target = event.target;
 
     const isPencil = target.classList.contains('pencilEdit');
@@ -89,6 +88,7 @@ document.getElementById('buttonActive').addEventListener('click', function showA
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
         }
     })
+
 });
 
 document.getElementById('buttonCompleted').addEventListener('click', function showComplited(){
