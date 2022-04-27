@@ -1,5 +1,5 @@
 import { Modal } from './Modal.js';
-import { createNewTask, isValidEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
+import { createNewTask, isValidEnter, isValidDateEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
 import { taskInput, tasksObj, plusIcon, tasks, ENTER_KEY_CODE, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 
@@ -126,5 +126,24 @@ document.getElementById('sortingBlock').addEventListener('click', function sortI
     if(event.target.id === 'sortByDate'){
         tasksObj.sort((a, b) => new Date(convertForInputDate(a.creationDate)) - new Date(convertForInputDate(b.creationDate)));
         eraseReWrite();
+    }
+});
+
+document.getElementById('filterBtn').addEventListener('click', function taskFilters(){
+    let inputValue = document.getElementById('filterInput').value;
+
+    if(isValidEnter(inputValue)){
+        let textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() != inputValue.toLowerCase() );
+
+        textFiltered.forEach( (item) => {
+            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
+        });
+
+    } else if (isValidDateEnter(inputValue)) {
+        let textFiltered = tasksObj.filter( (item) => item.creationDate != inputValue);
+
+        textFiltered.forEach( (item) => {
+            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
+        });
     }
 });
