@@ -1,5 +1,5 @@
 import { Modal } from './Modal.js';
-import { createNewTask, isValidEnter, isValidDateEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
+import { createNewTask, isValidEnter, isValidDateEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite, toFilter } from "./functions.js";
 import { taskInput, tasksObj, plusIcon, tasks, ENTER_KEY_CODE, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 
@@ -135,15 +135,11 @@ document.getElementById('filterBtn').addEventListener('click', function taskFilt
     if(isValidEnter(inputValue)){
         let textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() !== inputValue.toLowerCase() );
 
-        textFiltered.forEach( (item) => {
-            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
-        });
+        toFilter(textFiltered);
 
     } else if (isValidDateEnter(inputValue)) {
         let textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
 
-        textFiltered.forEach( (item) => {
-            document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
-        });
+        toFilter(textFiltered);
     }
 });
