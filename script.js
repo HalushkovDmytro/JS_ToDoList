@@ -136,7 +136,6 @@ document.getElementById('filterBtn').addEventListener('click', function taskFilt
         let textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() !== inputValue.toLowerCase() );
 
         toFilter(textFiltered);
-
     } else if (isValidDateEnter(inputValue)) {
         let textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
 
