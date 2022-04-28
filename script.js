@@ -138,7 +138,7 @@ document.getElementById('filterBtn').addEventListener('click', function taskFilt
         toFilter(textFiltered);
     }
     
-    if (isValidDateEnter(inputValue)) {
+    if(isValidDateEnter(inputValue)) {
         const textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
 
         toFilter(textFiltered);
