@@ -1,5 +1,5 @@
 import { Modal } from './Modal.js';
-import { createNewTask, isValidEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite } from "./functions.js";
+import { createNewTask, isValidEnter, isValidDateEnter, rejectTask, markAsInProgress, markAsDone, convertForInputDate, eraseReWrite, toFilter } from "./functions.js";
 import { taskInput, tasksObj, plusIcon, tasks, ENTER_KEY_CODE, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 
@@ -92,7 +92,7 @@ document.getElementById('buttonActive').addEventListener('click', function showA
 
 document.getElementById('buttonCompleted').addEventListener('click', function showComplited(){
     tasksObj.forEach((item) => {
-        if(item.isCompleted){
+        if (item.isCompleted){
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.FLEX;
         } else {
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
@@ -109,7 +109,7 @@ document.getElementById('buttonClearCompleted').addEventListener('click', functi
 document.getElementById('sortingTasks').addEventListener('click', function showSortBlock(){
     const sortBlock = document.getElementById('sortingBlock');
 
-    if(sortBlock.style.display === STYLES.DISPLAY.NONE){
+    if (sortBlock.style.display === STYLES.DISPLAY.NONE){
         sortBlock.style.display = STYLES.DISPLAY.FLEX
     } else if (sortBlock.style.display === STYLES.DISPLAY.FLEX){
         sortBlock.style.display = STYLES.DISPLAY.NONE
@@ -118,13 +118,29 @@ document.getElementById('sortingTasks').addEventListener('click', function showS
 });
 
 document.getElementById('sortingBlock').addEventListener('click', function sortItems(event){
-    if(event.target.id === 'sortByText'){
+    if (event.target.id === 'sortByText'){
         tasksObj.sort((a, b) => a.text.localeCompare(b.text));
         eraseReWrite();
     }
 
-    if(event.target.id === 'sortByDate'){
+    if (event.target.id === 'sortByDate'){
         tasksObj.sort((a, b) => new Date(convertForInputDate(a.creationDate)) - new Date(convertForInputDate(b.creationDate)));
         eraseReWrite();
+    }
+});
+
+document.getElementById('filterBtn').addEventListener('click', function taskFilters(){
+    const inputValue = document.getElementById('filterInput').value;
+
+    if (isValidEnter(inputValue)){
+        const textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() !== inputValue.toLowerCase() );
+
+        toFilter(textFiltered);
+    }
+    
+    if (isValidDateEnter(inputValue)) {
+        const textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
+
+        toFilter(textFiltered);
     }
 });

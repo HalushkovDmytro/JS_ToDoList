@@ -1,8 +1,12 @@
-import { regex, taskInput, tasksObj, tasks, currentDate, STYLES } from "./variables.js";
+import { regex, dateRegex, taskInput, tasksObj, tasks, currentDate, STYLES } from "./variables.js";
 import { Task } from "./Task.js";
 //cheking the validation 
 export function isValidEnter(userEnter) {
     return userEnter.match(regex);
+};
+
+export function isValidDateEnter(userDate) {
+    return userDate.match(dateRegex);
 }
 
 // getting the current date
@@ -150,6 +154,12 @@ export function eraseReWrite(){
     tasksObj.forEach((item) => {
         const markedId = document.getElementById(item.mainId)
 
-        item.isCompleted ? MarkAsDone(item, markedId) : MarkAsInProgress(item, markedId)
+        item.isCompleted ? markAsDone(item, markedId) : markAsInProgress(item, markedId)
     })
-}
+};
+
+export function toFilter(textFiltered){
+    textFiltered.forEach( (item) => {
+        document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
+    });
+};
