@@ -133,14 +133,14 @@ document.getElementById('filterBtn').addEventListener('click', function taskFilt
     let inputValue = document.getElementById('filterInput').value;
 
     if(isValidEnter(inputValue)){
-        let textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() != inputValue.toLowerCase() );
+        let textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() !== inputValue.toLowerCase() );
 
         textFiltered.forEach( (item) => {
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
         });
 
     } else if (isValidDateEnter(inputValue)) {
-        let textFiltered = tasksObj.filter( (item) => item.creationDate != inputValue);
+        let textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
 
         textFiltered.forEach( (item) => {
             document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
