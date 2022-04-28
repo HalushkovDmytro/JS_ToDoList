@@ -156,4 +156,10 @@ export function eraseReWrite(){
 
         item.isCompleted ? markAsDone(item, markedId) : markAsInProgress(item, markedId)
     })
-}
+};
+
+export function toFilter(textFiltered){
+    textFiltered.forEach( (item) => {
+        document.getElementById(item.mainId).style.display = STYLES.DISPLAY.NONE;
+    });
+};
