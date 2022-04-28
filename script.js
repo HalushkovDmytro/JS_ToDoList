@@ -130,14 +130,16 @@ document.getElementById('sortingBlock').addEventListener('click', function sortI
 });
 
 document.getElementById('filterBtn').addEventListener('click', function taskFilters(){
-    let inputValue = document.getElementById('filterInput').value;
+    const inputValue = document.getElementById('filterInput').value;
 
     if(isValidEnter(inputValue)){
-        let textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() !== inputValue.toLowerCase() );
+        const textFiltered = tasksObj.filter( (item) => item.text.toLowerCase() !== inputValue.toLowerCase() );
 
         toFilter(textFiltered);
-    } else if (isValidDateEnter(inputValue)) {
-        let textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
+    }
+    
+    if (isValidDateEnter(inputValue)) {
+        const textFiltered = tasksObj.filter( (item) => item.creationDate !== inputValue);
 
         toFilter(textFiltered);
     }
